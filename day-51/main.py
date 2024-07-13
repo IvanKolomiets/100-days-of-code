@@ -28,13 +28,13 @@ class InternetSpeedTwitterBot:
         self.down = self.driver.find_element(By.XPATH, value='//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[3]/div/div[2]/span').text
 
     def complain_needed(self):
-        if PROMISED_UP > self.up or PROMISED_DOWN > self.down:
+        if PROMISED_UP > float(self.up) or PROMISED_DOWN > float(self.down):
             return True
         return False
     
     def tweet_at_provider(self):
         if self.complain_needed():
-            self.driver.get("https://twitter.com/login")
+            self.driver.get("https://x.com/login")
 
             time.sleep(2)
             email = self.driver.find_element(By.XPATH, value='//*[@id="react-root"]/div/div/div[2]/main/div/div/div[1]/form/div/div[1]/label/div/div[2]/div/input')
